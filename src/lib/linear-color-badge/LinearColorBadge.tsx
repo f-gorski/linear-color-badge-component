@@ -1,15 +1,15 @@
-import { useMemo } from "react";
-import Color from "colorjs.io";
-import styles from "./LinearColorBadge.module.css";
+import { useMemo } from "react"
+import Color from "colorjs.io"
+import styles from "./LinearColorBadge.module.css"
 
-import { normalizeValue } from "./utils/normalize";
+import { normalizeValue } from "./utils/normalize"
 
 interface RangeColorBadgeProps {
-  value: number;
-  coloredValueMin: number;
-  coloredValueMax: number;
-  colorMin: string;
-  colorMax: string;
+  value: number
+  coloredValueMin: number
+  coloredValueMax: number
+  colorMin: string
+  colorMax: string
 }
 
 export default function RangeColorBadge({
@@ -19,7 +19,7 @@ export default function RangeColorBadge({
   colorMin,
   colorMax,
 }: RangeColorBadgeProps) {
-  const startingColor = useMemo(() => new Color(colorMin), [colorMin]);
+  const startingColor = useMemo(() => new Color(colorMin), [colorMin])
 
   const colorLinearRange = useMemo(
     () =>
@@ -28,13 +28,13 @@ export default function RangeColorBadge({
         outputSpace: "srgb",
       }),
     [startingColor, colorMax]
-  );
+  )
 
   //normalize value to range of 0-1
   const colorNormalizedValue = useMemo(
     () => normalizeValue(value, coloredValueMin, coloredValueMax),
     [value, coloredValueMin, coloredValueMax]
-  );
+  )
 
   return (
     <div
@@ -45,5 +45,5 @@ export default function RangeColorBadge({
     >
       <span>{value}</span>
     </div>
-  );
+  )
 }
