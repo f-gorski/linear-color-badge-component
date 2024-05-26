@@ -1,30 +1,59 @@
-# React + TypeScript + Vite
+# LinearColorBadge Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React component named `LinearColorBadge` designed to display a numerical value with a background color that changes linearly based on the provided value and specified color ranges. The component accepts a value and a range with corresponding colors to visually represent where the value falls within the range.
 
-Currently, two official plugins are available:
+## Important Note
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+While this project serves as a demonstration of the LinearColorBadge component, it is done as a leisure project and it's not recommended for production use in its current form. For real-world projects, consider bundling this component into a component library to make it more reusable across different projects.
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To install the component, you can simply copy the `LinearColorBadge.tsx` (along with its utils and css file) file into your React project (and install its dependencies).
 
-- Configure the top-level `parserOptions` property like this:
+## Usage
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
+```jsx
+import React from "react"
+import LinearColorBadge from "./LinearColorBadge"
+
+const MyComponent = () => {
+  return (
+    <div>
+      <p>Current Status:</p>
+      <LinearColorBadge
+        value={50}
+        coloredValueMin="0"
+        coloredValueMax="100"
+        colorMin="#ff0000"
+        colorMax="#00ff00"
+      />
+    </div>
+  )
 }
+
+export default MyComponent
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Props
+
+- `value`**\<number\>**: The numerical value to display inside the badge.
+- `colorMax`**\<string\>**: The color representing the top end of the range.
+- `colorMin`**\<string\>**: The color representing the bottom end of the range.
+- `coloredValueMax`**\<string\>**: The top value of the range.
+- `coloredValueMin`**\<string\>**: The bottom value of the range.
+
+## Example
+
+An example of usage can be found in the provided MyComponent where the LinearColorBadge component is used to display a value with a background color that varies based on its position within the defined range. To run the example simply run
+
+```bash
+$ npm run dev
+```
+
+## Tests
+
+The component is accompanied by test cases to ensure its functionality. You can execute the tests by running
+
+```bash
+$ npm run test
+```
